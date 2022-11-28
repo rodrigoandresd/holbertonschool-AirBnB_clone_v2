@@ -136,9 +136,7 @@ class HBNBCommand(cmd.Cmd):
             dict_kwargs[key] = value
 
         new_instance = HBNBCommand.classes[args[0]]()
-        
-        for key, value in dict_kwargs.items():
-            new_instance.__dict__[key] = value
+        new_instance.__dict__.update(dict_kwargs)
         print(new_instance.id)
         storage.save()
 
