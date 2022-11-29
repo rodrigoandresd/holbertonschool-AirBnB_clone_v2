@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-""" Console Module """
+
+"""
+    Console Module 
+"""
+
 import cmd
 import sys
 from models.base_model import BaseModel
@@ -124,7 +128,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         params = s_args[1:]
-        dict_kwargs = dict()
+        new_instance = HBNBCommand.classes[s_args[0]]()
+        
         for kwarg in params:
             key, value = kwarg.split("=")
             if value[0] == "\"":
@@ -135,10 +140,8 @@ class HBNBCommand(cmd.Cmd):
                 value = float(value)
             else:
                 value = int(value)
-            dict_kwargs[key] = value
+            new_instance.__dict__[key] = value
 
-        new_instance = HBNBCommand.classes[s_args[0]]()
-        new_instance.__dict__.update(dict_kwargs)
         print(new_instance.id)
         storage.save()
 
