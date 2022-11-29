@@ -129,6 +129,8 @@ class HBNBCommand(cmd.Cmd):
             key, value = kwarg.split("=")
             if value[0] == "\"":
                 value = str(value.strip('"'))
+                if "_" in value:
+                    value = value.replace('_', ' ')
             elif "." in value:
                 value = float(value)
             else:
