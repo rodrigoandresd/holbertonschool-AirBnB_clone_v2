@@ -8,8 +8,7 @@ from models.amenity import Amenity
 from os import getenv
 
 
-metadata = Base.metadata
-place_amenity_table = Table('place_amenity', metadata,
+place_amenity_table = Table('place_amenity', Base.metadata,
                       Column('place_id', ForeignKey('places.id'), String(60),
                              primary_key=True, nullable=False),
                       Column('amenity_id', ForeignKey('amenities.id'), String(60),
