@@ -6,6 +6,7 @@
 from os import getenv
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import Session, scoped_session, sessionmaker
+from models.base_model import Base
 
 
 class DBStorage:
@@ -24,18 +25,17 @@ class DBStorage:
         self.__engine = create_engine(
             f'mysql+mysqldb://{user}:{pwd}@{host}:3306/{db}',
             pool_pre_ping=True)
-        metadata = MetaData()
+        
         if getenv('HBNB_ENV') == 'test':
-            metadata.drop_all()
+            Base.metadata.drop_all()
 
     def all(self, cls=None):
         """
             Query on the current database session all objects depending
             of the class name
         """
-        self.__session = Session(self.__engine)
 
-        dict_cls = dict()
+        dict_cls = {}
         if cls:
             for obj in self.__session.query(cls).all():
                 dict_cls[obj.to_dict()['__class__'] + '.' + obj.id] = obj
