@@ -6,7 +6,6 @@ from sqlalchemy.orm import relationship
 from models.review import Review
 from models.amenity import Amenity
 from os import getenv
-import models
 
 
 metadata = Base.metadata
@@ -39,7 +38,8 @@ class Place(BaseModel, Base):
         @property
         def reviews(self):
             """Return a list with the citites"""
-            review_dict = models.storage.all(Review)
+            from models import storage
+            review_dict = storage.all(Review)
             review_list = []
             for value in review_dict.values():
                 if value.place_id == self.id:
@@ -48,7 +48,8 @@ class Place(BaseModel, Base):
 
         @property
         def amenities(self):
-            amenity_dict = models.storage.all(Review)
+            from models import storage
+            amenity_dict = storage.all(Review)
             amenity_list = []
             for value in amenity_dict.values():
                 if value.amenity.id == self.amenity_ids:
