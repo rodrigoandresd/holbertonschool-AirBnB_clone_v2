@@ -10,7 +10,7 @@ import models
 
 
 metadata = Base.metadata
-place_amenity = Table('place_amenity', metadata,
+place_amenity_table = Table('place_amenity', metadata,
                       Column('place_id', ForeignKey('places.id'), String(60),
                              primary_key=True, nullable=False),
                       Column('amenity_id', ForeignKey('amenities.id'), String(60),
