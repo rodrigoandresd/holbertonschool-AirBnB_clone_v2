@@ -7,7 +7,7 @@ from models.review import Review
 from models.amenity import Amenity
 from os import getenv
 
-env = getenv('HBNB_TYPE_STORAGE')
+HBNB_TYPE_STORAGE = getenv('HBNB_TYPE_STORAGE')
 
 
 metadata = Base.metadata
@@ -18,7 +18,7 @@ place_amenity_table = Table('place_amenity', metadata,
                              primary_key=True, nullable=False))
 
 
-class Place(BaseModel, Base):
+class Place(BaseModel, Base if HBNB_TYPE_STORAGE == 'db' else object):
     """ A place to stay """
     __tablename__ = 'places'
     city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
@@ -36,7 +36,7 @@ class Place(BaseModel, Base):
     amenities = relationship('Amenity', secondary='place_amenity',
                              viewonly=False)
 
-    if env != 'db':
+    if HBNB_TYPE_STORAGE != 'db':
         city_id = ""
         user_id = ""
         name = ""

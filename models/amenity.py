@@ -5,15 +5,15 @@ from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
 from os import getenv
 
-env = getenv('HBNB_TYPE_STORAGE')
+HBNB_TYPE_STORAGE = getenv('HBNB_TYPE_STORAGE')
 
 
-class Amenity(BaseModel, Base):
+class Amenity(BaseModel, Base if HBNB_TYPE_STORAGE == 'db' else object):
     """ Amenity Class to store amenities information"""
 
     __tablename__ = 'amenities'
     name = Column(String(128), nullable=False)
     place_amenities = relationship('Place', secondary='place_amenity', viewonly=False)
     
-    if env != "db":
+    if HBNB_TYPE_STORAGE != "db":
         name = ""
