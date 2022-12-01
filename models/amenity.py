@@ -13,7 +13,6 @@ class Amenity(BaseModel, Base if HBNB_TYPE_STORAGE == 'db' else object):
 
     __tablename__ = 'amenities'
     name = Column(String(128), nullable=False)
-    place_amenities = relationship('Place', secondary='place_amenity', viewonly=False)
     
     if HBNB_TYPE_STORAGE != "db":
         name = ""

@@ -11,7 +11,7 @@ HBNB_TYPE_STORAGE = getenv('HBNB_TYPE_STORAGE')
 
 
 metadata = Base.metadata
-place_amenity_table = Table('place_amenity', metadata,
+place_amenity = Table('place_amenity', metadata,
                       Column('place_id', String(60), ForeignKey('places.id'),
                              primary_key=True, nullable=False),
                       Column('amenity_id', String(60), ForeignKey('amenities.id'),
@@ -33,7 +33,7 @@ class Place(BaseModel, Base if HBNB_TYPE_STORAGE == 'db' else object):
     longitude = Column(Float)
     amenity_ids = []
     reviews = relationship('Review', backref='place', cascade='all, delete')
-    amenities = relationship('Amenity', secondary='place_amenity',
+    amenities = relationship('Amenity', secondary=place_amenity,
                              viewonly=False)
 
     if HBNB_TYPE_STORAGE != 'db':
