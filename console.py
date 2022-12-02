@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-    Console Module 
+    Console Module
 """
 
 import cmd
@@ -127,7 +127,7 @@ class HBNBCommand(cmd.Cmd):
         if s_args[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
-        
+
         new_instance = HBNBCommand.classes[s_args[0]]()
         if len(s_args) > 1:
             params = s_args[1:]

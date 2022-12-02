@@ -14,7 +14,8 @@ metadata = Base.metadata
 place_amenity = Table('place_amenity', metadata,
                       Column('place_id', String(60), ForeignKey('places.id'),
                              primary_key=True, nullable=False),
-                      Column('amenity_id', String(60), ForeignKey('amenities.id'),
+                      Column('amenity_id', String(60),
+                             ForeignKey('amenities.id'),
                              primary_key=True, nullable=False))
 
 
@@ -48,7 +49,7 @@ class Place(BaseModel, Base if HBNB_TYPE_STORAGE == 'db' else object):
         latitude = 0.0
         longitude = 0.0
         amenity_ids = []
-        
+
         @property
         def reviews(self):
             """Return a list with the citites"""

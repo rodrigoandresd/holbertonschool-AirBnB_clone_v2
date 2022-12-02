@@ -7,6 +7,7 @@ from os import getenv
 
 HBNB_TYPE_STORAGE = getenv('HBNB_TYPE_STORAGE')
 
+
 class User(BaseModel, Base if HBNB_TYPE_STORAGE == 'db' else object):
     """This class defines a user by various attributes"""
     __tablename__ = 'users'
@@ -15,7 +16,7 @@ class User(BaseModel, Base if HBNB_TYPE_STORAGE == 'db' else object):
     first_name = Column(String(128))
     last_name = Column(String(128))
     places = relationship('Place', backref='user', cascade='all, delete')
-    reviews =relationship('Review', backref='user', cascade='all, delete')
+    reviews = relationship('Review', backref='user', cascade='all, delete')
 
     if HBNB_TYPE_STORAGE != "db":
         email = ''
