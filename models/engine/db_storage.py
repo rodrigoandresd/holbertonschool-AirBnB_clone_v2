@@ -6,7 +6,7 @@
 from os import getenv
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import Session, scoped_session, sessionmaker
-
+from models.base_model import Base
 
 
 class DBStorage:
@@ -26,9 +26,8 @@ class DBStorage:
             f'mysql+mysqldb://{user}:{pwd}@{host}:3306/{db}',
             pool_pre_ping=True)
 
-        metadata = MetaData()
         if getenv('HBNB_ENV') == 'test':
-            metadata.drop_all()
+            Base.metadata.drop_all()
 
     def all(self, cls=None):
         """
