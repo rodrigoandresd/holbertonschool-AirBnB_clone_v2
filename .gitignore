@@ -25,3 +25,6 @@ tests/test_models/__pycache__/test_amenity.cpython-38.pyc
 tests/__pycache__/__init__.cpython-38.pyc
 tests/__pycache__/test_console.cpython-38.pyc
 tests/test_models/test_engine/__pycache__/test_db_storage.cpython-38.pyc
+web_flask/__pycache__/0-hello_route.cpython-38.pyc
+.gitignore
+web_flask/__pycache__/__init__.cpython-38.pyc
