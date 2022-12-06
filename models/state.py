@@ -16,6 +16,10 @@ class State(BaseModel, Base if HBNB_TYPE_STORAGE == 'db' else object):
     cities = relationship("City", cascade="all, delete, delete-orphan",
                           backref='state')
 
+    def __init__(self, *args, **kwargs):
+        """initialize inherited"""
+        super().__init__(*args, **kwargs)
+
     if HBNB_TYPE_STORAGE != "db":
         name = ''
 

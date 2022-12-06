@@ -34,3 +34,5 @@ web_flask/__pycache__/4-number_route.cpython-38.pyc
 web_flask/__pycache__/5-number_template.cpython-38.pyc
 web_flask/__pycache__/6-number_odd_or_even.cpython-38.pyc
 main.py
+models/state.py
+main_0.py
