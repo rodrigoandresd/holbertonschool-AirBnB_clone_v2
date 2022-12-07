@@ -13,7 +13,7 @@ class State(BaseModel, Base if HBNB_TYPE_STORAGE == 'db' else object):
     """ State class """
     __tablename__ = 'states'
     name = Column(String(128), nullable=False)
-    cities = relationship("City", cascade="all, delete, delete-orphan",
+    cities = relationship("City", cascade="all, delete",
                           backref='state')
 
     if HBNB_TYPE_STORAGE != "db":
