@@ -36,7 +36,7 @@ class DBStorage:
         """
 
         dict_cls = {}
-        if cls:
+        if cls is not None:
             for obj in self.__session.query(cls).all():
                 dict_cls[obj.to_dict()['__class__'] + '.' + obj.id] = obj
         else:

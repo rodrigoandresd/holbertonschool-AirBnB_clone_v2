@@ -14,7 +14,6 @@ class State(BaseModel, Base if HBNB_TYPE_STORAGE == 'db' else object):
     __tablename__ = 'states'
     name = Column(String(128), nullable=False)
     cities = relationship("City", backref='state', cascade="all, delete")
-                          
 
     if HBNB_TYPE_STORAGE != "db":
         name = ''
@@ -25,8 +24,7 @@ class State(BaseModel, Base if HBNB_TYPE_STORAGE == 'db' else object):
             from models import storage
             city_dict = storage.all(City)
             city_list = []
-            for value in city_dict.values():	
-                if value.state_id == self.id:	
-                    city_list.append(value)	
+            for value in city_dict.values():
+                if value.state_id == self.id:
+                    city_list.append(value)
             return city_list
-
