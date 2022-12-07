@@ -21,11 +21,6 @@ class State(BaseModel, Base if HBNB_TYPE_STORAGE == 'db' else object):
 
         @property
         def cities(self):
-            """Return a list with the cities"""
             from models import storage
-            city_dict = storage.all(City)
-            city_list = []
-            for value in city_dict.values():
-                if value.state_id == self.id:
-                    city_list.append(value)
-            return city_list
+            return [city for city in list(storage.all(City).values())
+                    if city.state_id == self.id]
