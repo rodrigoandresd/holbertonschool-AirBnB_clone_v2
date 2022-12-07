@@ -11,7 +11,7 @@ class FileStorage:
     def all(self, cls=None):
         """Returns a dictionary of objects"""
         objs = {}
-        if cls:
+        if cls is not None:
             for key, value in self.__objects.items():
                 if type(value).__name__ == cls.__name__:
                     objs[key] = value

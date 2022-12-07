@@ -9,15 +9,13 @@ from os import getenv
 HBNB_TYPE_STORAGE = getenv('HBNB_TYPE_STORAGE')
 
 
-class State(BaseModel, Base if HBNB_TYPE_STORAGE == 'db' else object):
+class State(BaseModel, Base):
     """ State class """
     __tablename__ = 'states'
     name = Column(String(128), nullable=False)
     cities = relationship("City", backref='state', cascade="all, delete")
 
     if HBNB_TYPE_STORAGE != "db":
-        name = ''
-
         @property
         def cities(self):
             """Return a list with the cities"""
