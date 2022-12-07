@@ -37,3 +37,4 @@ main.py
 models/state.py
 main_0.py
 drop_dev_database.sql
+7-dump.sql
