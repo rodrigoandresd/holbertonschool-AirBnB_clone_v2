@@ -19,7 +19,7 @@ place_amenity = Table('place_amenity', metadata,
                              primary_key=True, nullable=False))
 
 
-class Place(BaseModel, Base if HBNB_TYPE_STORAGE == 'db' else object):
+class Place(BaseModel, Base):
     """ A place to stay """
     __tablename__ = 'places'
     city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
