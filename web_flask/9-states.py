@@ -22,6 +22,7 @@ def cities_states():
     states = storage.all(State).values()
     return render_template('9-states.html', states=states, flag="state")
 
+
 @app.route("/states/<id>", strict_slashes=False)
 def cities_state_id(id):
     '''Display a HTML page with the states_id'''
