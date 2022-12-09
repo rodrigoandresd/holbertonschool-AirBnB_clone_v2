@@ -40,3 +40,5 @@ drop_dev_database.sql
 7-dump.sql
 web_flask/__pycache__/8-cities_by_states.cpython-38.pyc
 web_flask/__pycache__/9-states.cpython-38.pyc
+10-dump.sql
+web_flask/__pycache__/10-hbnb_filters.cpython-38.pyc
